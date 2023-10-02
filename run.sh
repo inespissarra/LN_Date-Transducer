@@ -2,6 +2,7 @@
 
 mkdir -p compiled images
 
+rm -f ./compiled/*.fst ./images/*.pdf
 
 # ############ Compile source transducers ############
 for i in sources/*.txt tests/*.txt; do
@@ -74,14 +75,16 @@ done
 
 
 #2 - presents the output with the tokens concatenated (uses a different syms on the output)
-fst2word() { awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' }
+fst2word() { 
+    awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' 
+    }
 
 trans=mix2numerical.fst
 echo "\n***********************************************************"
 echo "Testing mix2numerical (output is a string  using 'syms-out.txt')"
 echo "***********************************************************"
 for w in "APR/26/2020" "APR/11/2020"; do
-    res=$(./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
+    res=$(python3 ./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
                        fstcompose - compiled/$trans | fstshortestpath | fstproject --project_type=output |
                        fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=./scripts/syms-out.txt | fst2word)
     echo "$w = $res"
@@ -90,14 +93,16 @@ done
 echo "\nThe end"
 
 #-----------------------------------------------------------------------
-fst2word() { awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' }
+fst2word() { 
+    awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' 
+    }
 
 trans=en2pt.fst
 echo "\n***********************************************************"
 echo "Testing en2pt (output is a string  using 'syms-out.txt')"
 echo "***********************************************************"
 for w in "APR/26/2020" "APR/11/2020"; do
-    res=$(./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
+    res=$(python3 ./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
                        fstcompose - compiled/$trans | fstshortestpath | fstproject --project_type=output |
                        fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=./scripts/syms-out.txt | fst2word)
     echo "$w = $res"
@@ -106,14 +111,16 @@ done
 echo "\nThe end"
 
 #-----------------------------------------------------------------------
-fst2word() { awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' }
+fst2word() { 
+    awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' 
+    }
 
 trans=datenum2text.fst
 echo "\n***********************************************************"
 echo "Testing datenum2text (output is a string  using 'syms-out.txt')"
 echo "***********************************************************"
 for w in "04/26/2020" "4/11/2020"; do
-    res=$(./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
+    res=$(python3 ./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
                        fstcompose - compiled/$trans | fstshortestpath | fstproject --project_type=output |
                        fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=./scripts/syms-out.txt | fst2word)
     echo "$w = $res"
@@ -122,14 +129,16 @@ done
 echo "\nThe end"
 
 #-----------------------------------------------------------------------
-fst2word() { awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' }
+fst2word() { 
+    awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' 
+    }
 
 trans=mix2text.fst
 echo "\n***********************************************************"
 echo "Testing mix2text (output is a string  using 'syms-out.txt')"
 echo "***********************************************************"
 for w in "APR/26/2020" "ABR/11/2020"; do
-    res=$(./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
+    res=$(python3 ./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
                        fstcompose - compiled/$trans | fstshortestpath | fstproject --project_type=output |
                        fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=./scripts/syms-out.txt | fst2word)
     echo "$w = $res"
@@ -138,14 +147,16 @@ done
 echo "\nThe end"
 
 #-----------------------------------------------------------------------
-fst2word() { awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' }
+fst2word() { 
+    awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' 
+    }
 
 trans=date2text.fst
 echo "\n***********************************************************"
 echo "Testing date2text (output is a string  using 'syms-out.txt')"
 echo "***********************************************************"
 for w in "APR/26/2020" "ABR/11/2020" "04/26/2020" "4/11/2020"; do
-    res=$(./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
+    res=$(python3 ./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
                        fstcompose - compiled/$trans | fstshortestpath | fstproject --project_type=output |
                        fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=./scripts/syms-out.txt | fst2word)
     echo "$w = $res"
@@ -154,14 +165,16 @@ done
 echo "\nThe end"
 
 #-----------------------------------------------------------------------
-fst2word() { awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' }
+fst2word() { 
+    awk '{if(NF>=3){printf("%s",$3)}}END{printf("\n")}' 
+    }
 
 trans=date2text.fst
 echo "\n***********************************************************"
 echo "Testing date2text (output is a string  using 'syms-out.txt')"
 echo "***********************************************************"
 for w in "9/09/2001" "01/3/2011" "02/24/2022" "10/01/2099" "12/22/2043" "OCT/30/2025" "DEZ/13/2069" "FEV/25/2071" "MAR/21/2060"; do
-    res=$(./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
+    res=$(python3 ./scripts/word2fst.py $w | fstcompile --isymbols=syms.txt --osymbols=syms.txt | fstarcsort |
                        fstcompose - compiled/$trans | fstshortestpath | fstproject --project_type=output |
                        fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=./scripts/syms-out.txt | fst2word)
     echo "$w = $res"
